@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        
+        <div class="wrapper large-wrapper drop-shadow">
+            <h1 id="logo"><a href="/">Movies You Like</a></h1>
+            <p class="tagline">Type the name of a movie you like... 
+we'll find movies you'd like based on that movie.</p>
+
+            <form id="movie-search" class="movie-search" action="related.html?search='value'">
+            <input type="search" placeholder="Type the name of a movie" name="search">
+            <input type="submit" value="submit">
+            </form>
+
+            <div class="movie-view clearfix">
+
+                <script id="movie-view" type="x-handlebars-template">
+
+                    <section class="content-wrapper clearfix">
+                    {{#if poster_path}}
+                        <img class="left movie-poster" src='http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{poster_path}}'>
+                        {{else}}
+                            <img class="left movie-poster" src='http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w154{{backdrop_path}}'>
+                    {{/if}}
+                    <p>{{overview}}</p>
+
+                    <ul class="movieInfo">
+                        {{#if imdb_id}}
+                        <li><a href="http://imdb.com/title/{{imdb_id}}" target="_blank">View on IMDB</a></li>
+                        {{/if}}
+                        {{#if homepage}}
+                        <li><a href="{{homepage}}" target="_blank">View Movie Homepage</a></li>
+                        {{/if}}
+                        <li><a href="http://movies.netflix.com/Search?v1={{title}}" target="_blank">Search on Netflix</a></li>
+                        <li>Released On: {{release_date}}</li>
+                        {{#if vote_average}}
+                        <li>User Rating: {{vote_average}}</li>
+                        {{/if}}
+                    </ul>
+
+                   <p class="more-recommendations">If you like this movie, <strong><a href="/exactMovie.html?movieID={{id}}">view our movie recommendations for it</a></strong></p>
+
+                    </section>
+                    </script>
+
+                </div>
+
+                <section class="cast-members clearfix">
+
+                    <script id="movie-cast-view" type="x-handlebars-template">
+                        <h3>Cast Members:</h3>
+                        <ul class="cast-view">
+                        {{#each cast}}
+                            <li class="cast-member clearfix">
+                                {{#if profile_path}}
+                                <img class="left actor-profile" src="http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w45{{profile_path}}" alt="{{name}}">
+                                {{else}}
+                                <img class="left actor-profile" width="45" height="56" src="img/noPicActor.png" alt="" />
+                                {{/if}}
+
+                                <span class="real-name">{{name}}</span>
+                                <span class="playing-as">Playing as..{{character}}</span>
+                        {{/each}}
+                        </ul>
+
+                </script>
+
+            </section>
+
+
+        </div><!--//small-wrapper drop-shadow-->
+
+        <footer>&copy; Copyright 2013 created by <a target="_blank" href="http://jeffAwesome.com">Jeff Richardson</a> | All Rights Reserved | Data coming from <a href="http://www.themoviedb.org" target="_blank">The Moviedb.org</a></footer>
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/vendor/handlebars.js"></script>
+        <script src="js/main-min.js"></script>
+        <script>myMovieRec.movieViewData();</script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39170239-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    </body>
+</html>

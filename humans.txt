@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Jeff Richardson -- Front End Engineer -- /jeffAwesome
+    Craig Teel -- Designer (Home Page)
+
+# THANKS
+
+    Jason Zimdars - For several great UX ideas.
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Normalize.css, jQuery, Modernizr, handlebars, TheMovieDB for providing JSON data.
